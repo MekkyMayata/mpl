@@ -4,7 +4,7 @@ def call(String folder_path, String s3_bucket_name, String aws_region) {
   def region = aws_region
 
   def aws_cp = "aws s3 cp ${folder_path} s3://${bucket}/ --region ${region}".execute()
-  println(aws_cp + "here")
+  println("here")
   // long execution
   // aws_cp.waitForOrKill(5000)
 
