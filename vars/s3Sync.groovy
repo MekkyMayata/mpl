@@ -13,3 +13,4 @@ def call(String folder_path, String s3_bucket_name, String region) {
   aws_s3_out.waitForOrKill(5000)
 
   return aws_s3_out
+}
