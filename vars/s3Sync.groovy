@@ -4,8 +4,8 @@ def call(String folder_path, String s3_bucket_name, String aws_region) {
   def region = aws_region
 
   def aws_cp = "aws s3 cp ${folder_path} s3://${bucket}/ --region ${region} --recursive".execute()
-  def b = new StringBuffer()
-  aws_cp.consumeProcessErrorStream(b)
+  def cp_buffer = new StringBuffer()
+  aws_cp.consumeProcessErrorStream(cp_buffer)
   // println("here")
   // println(region)
   // println(bucket)
@@ -17,6 +17,8 @@ def call(String folder_path, String s3_bucket_name, String aws_region) {
 
   // check
   def aws_s3_out = "aws s3 ls s3://${bucket}/${folder_path}/ --region ${region}".execute()
+  def ls_buffer = new StringBuffer()
+  aws_ls.consumeProcessErrorStream(ls_buffer)
   // long execution
   // aws_s3_out.waitForOrKill(5000)
 
