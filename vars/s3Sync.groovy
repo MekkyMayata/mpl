@@ -1,7 +1,7 @@
-def call(String folder_path, String s3_bucket_name, String region) {
+def call(String folder_path, String s3_bucket_name, String aws_region) {
   def bucket = s3_bucket_name
   def folder = folder_path
-  def region = region
+  def region = aws_region
 
   def aws_cp = "aws s3 cp ${folder_path} s3://${bucket}/ --region ${region}".execute()
   // long execution
